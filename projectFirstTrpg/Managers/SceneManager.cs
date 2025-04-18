@@ -13,7 +13,7 @@ namespace Managers
         public void Run()
         {
             sceneStack.Push(new IntroScene());
-
+            
             while (sceneStack.Count > 0)
             {
                 Console.Clear();

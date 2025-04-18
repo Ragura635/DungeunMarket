@@ -10,7 +10,7 @@ namespace Scenes.CharacterCreation
         public GameState Run()
         {
             Console.Clear();
-            Console.WriteLine("스파르타 던전에 오신 여러분 환영합니다.\n");
+            Console.WriteLine("던근마켓에 오신 여러분 환영합니다.\n");
             Console.WriteLine("원하시는 이름을 입력해주세요. (공백 입력 시 취소)\n");
             Console.Write(">> ");
             string input = Console.ReadLine();

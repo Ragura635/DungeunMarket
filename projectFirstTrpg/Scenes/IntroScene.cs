@@ -13,7 +13,7 @@ namespace Scenes
         public GameState Run()
         {
             Console.Clear();
-            Console.WriteLine("스파르타 던전에 오신 여러분 환영합니다.\n");
+            Console.WriteLine("던근마켓에 오신 여러분 환영합니다.\n");
 
             Console.WriteLine("1. 새로 시작하기");
             Console.WriteLine("2. 불러오기");

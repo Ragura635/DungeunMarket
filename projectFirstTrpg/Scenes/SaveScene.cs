@@ -11,7 +11,7 @@ namespace Scenes
         public GameState Run()
         {
             Console.Clear();
-            Console.WriteLine("스파르타 던전에 오신 여러분 환영합니다.\n");
+            Console.WriteLine("던근마켓에 오신 여러분 환영합니다.\n");
             Console.WriteLine("저장할 세이브 슬롯을 선택해주세요.\n");
 
             for (int i = 1; i <= 3; i++)

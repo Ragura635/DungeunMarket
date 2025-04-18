@@ -8,6 +8,8 @@ namespace Utils
 {
     public static class ConsoleUtil
     {
+        //TODO: InvalidInput메서드를 여기에 넣기 혹은 다른 템플릿용 스크립트로 분리하기
+
         public static void WaitForNext()
         {
             Console.WriteLine("\n계속하려면 아무 키나 누르세요...");

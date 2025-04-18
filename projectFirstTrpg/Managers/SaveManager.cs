@@ -101,7 +101,7 @@ namespace Managers
             public int Exp { get; set; }
             public int MaxExp { get; set; }
             public int DamagedAmount { get; set; }
-            public string SavedAt { get; set; }  // ✅ 요약 표시용 추가
+            public string SavedAt { get; set; }
 
             public List<ItemSaveData> InventoryItems { get; set; }
             public List<ItemSaveData> EquippedItems { get; set; }
