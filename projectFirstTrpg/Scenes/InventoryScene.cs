@@ -25,7 +25,7 @@ namespace Scenes
             PlayerInventoryView.PrintItemList(player.Inventory);
 
             Console.WriteLine("\n1. 장착 관리");
-            Console.WriteLine("0. 돌아가기");
+            Console.WriteLine("0. 나가기");
             Console.Write("\n원하시는 행동을 입력해주세요.\n>> ");
 
             string input = Console.ReadLine();
@@ -33,7 +33,7 @@ namespace Scenes
             return input switch
             {
                 "1" => GameState.Equip,
-                "0" => GameState.Main,
+                "0" => GameState.Pop,
                 _ => InvalidInput()
             };
         }
@@ -42,7 +42,7 @@ namespace Scenes
         {
             Console.WriteLine("\n잘못된 입력입니다.");
             ConsoleUtil.WaitForNext();
-            return GameState.Inventory;
+            return GameState.Retry;
         }
 
         public GameState SceneType => GameState.Inventory;

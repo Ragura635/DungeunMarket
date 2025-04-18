@@ -2,53 +2,111 @@
 using System.Collections.Generic;
 using Core;
 using Scenes;
-using Scenes;
-using Scenes.ShopScenes;
+using Scenes.CharacterCreation;
 
 namespace Managers
 {
     internal class SceneManager
     {
-        private readonly Dictionary<GameState, IScene> scenes;
-        private GameState currentState;
-
-        public SceneManager()
-        {
-            scenes = new Dictionary<GameState, IScene>
-            {
-                { GameState.Main, new MainScene() },
-                { GameState.Shop, new ShopScene() },
-                { GameState.Buy, new BuyScene() },
-                { GameState.Sell, new SellScene() },
-                { GameState.Equip, new EquipScene() },
-                { GameState.Dungeon, new DungeonScene() },
-                { GameState.Rest, new RestScene() },
-                { GameState.Inventory, new InventoryScene() },
-                { GameState.Status, new StatusScene() },
-                { GameState.GameOver, new GameOverScene() },
-                //{ GameState.Intro, new IntroScene() },
-                //{ GameState.CreateCharacter, new CreateCharacterScene() },
-                //{ GameState.LoadCharacter, new LoadCharacterScene() },
-                { GameState.Exit, null }
-            };
-
-            currentState = GameState.Main;
-        }
+        private readonly Stack<IScene> sceneStack = new();
 
         public void Run()
         {
-            while (currentState != GameState.Exit)
+            sceneStack.Push(new IntroScene());
+
+            while (sceneStack.Count > 0)
             {
                 Console.Clear();
 
-                if (scenes.TryGetValue(currentState, out var scene) && scene != null)
+                IScene currentScene = sceneStack.Peek();
+                GameState next = currentScene.Run();
+
+                switch (next)
                 {
-                    currentState = scene.Run();
-                }
-                else
-                {
-                    Console.WriteLine($"[에러] '{currentState}' 에 해당하는 Scene이 존재하지 않습니다.");
-                    currentState = GameState.Exit;
+                    case GameState.Retry:
+                        continue;
+
+                    case GameState.Pop:
+                        sceneStack.Pop(); // 현재 씬 제거
+                        break;
+
+                    case GameState.MainFromLoad:
+                        sceneStack.Pop();                 // LoadScene 제거
+                        sceneStack.Push(new MainScene()); // MainScene 추가
+                        break;
+
+                    case GameState.Intro:
+                        sceneStack.Push(new IntroScene());
+                        break;
+
+                    case GameState.CreateName:
+                        sceneStack.Push(new CreateNameScene());
+                        break;
+
+                    case GameState.SelectJob:
+                        sceneStack.Push(new SelectJobScene());
+                        break;
+
+                    case GameState.SelectSlot:
+                        sceneStack.Push(new SelectSlotScene());
+                        break;
+
+                    case GameState.Save:
+                        sceneStack.Push(new SaveScene());
+                        break;
+
+                    case GameState.Load:
+                        sceneStack.Push(new LoadScene());
+                        break;
+
+                    case GameState.Main:
+                        sceneStack.Push(new MainScene());
+                        break;
+
+                    case GameState.Shop:
+                        sceneStack.Push(new ShopScene());
+                        break;
+
+                    case GameState.Buy:
+                        sceneStack.Push(new BuyScene());
+                        break;
+
+                    case GameState.Sell:
+                        sceneStack.Push(new SellScene());
+                        break;
+
+                    case GameState.Equip:
+                        sceneStack.Push(new EquipScene());
+                        break;
+
+                    case GameState.Dungeon:
+                        sceneStack.Push(new DungeonScene());
+                        break;
+
+                    case GameState.Rest:
+                        sceneStack.Push(new RestScene());
+                        break;
+
+                    case GameState.Inventory:
+                        sceneStack.Push(new InventoryScene());
+                        break;
+
+                    case GameState.Status:
+                        sceneStack.Push(new StatusScene());
+                        break;
+
+                    case GameState.GameOver:
+                        sceneStack.Push(new GameOverScene());
+                        break;
+
+                    case GameState.Exit:
+                        sceneStack.Clear(); // 전체 종료
+                        break;
+
+                    default:
+                        Console.WriteLine($"Unknown Game Scene");
+                        sceneStack.Pop();
+                        break;
                 }
             }
 

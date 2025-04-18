@@ -11,8 +11,6 @@ namespace Entry
     {
         static void Main(string[] args)
         {
-            PlayerData.Player = new Player("Ragu", JobType.Warrior);
-
             SceneManager manager = new SceneManager();
             manager.Run();
         }

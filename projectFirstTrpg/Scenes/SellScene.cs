@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Views;
 
-namespace Scenes.ShopScenes
+namespace Scenes
 {
     public class SellScene : IScene
     {
@@ -27,7 +27,7 @@ namespace Scenes.ShopScenes
             Console.WriteLine("[보유 아이템 목록]");
             PlayerInventoryView.PrintSellList(player.Inventory);
 
-            Console.WriteLine("\n0. 나가기");
+            Console.WriteLine("\n0. 돌아가기");
             Console.WriteLine("\n판매할 아이템 번호를 입력해주세요.");
             Console.Write(">> ");
 
@@ -38,12 +38,12 @@ namespace Scenes.ShopScenes
             {
                 Console.WriteLine("\n잘못된 입력입니다.");
                 ConsoleUtil.WaitForNext();
-                return GameState.Sell;
+                return GameState.Retry;
             }
 
             if (index == 0)
             {
-                return GameState.Shop;
+                return GameState.Pop;
             }
 
             Item selectedItem = player.Inventory.Items[index - 1];
@@ -58,7 +58,7 @@ namespace Scenes.ShopScenes
             Console.WriteLine($"\n{selectedItem.Name}을(를) {(int)(selectedItem.Price * 0.85f)} G에 판매했습니다.");
 
             ConsoleUtil.WaitForNext();
-            return GameState.Sell;
+            return GameState.Retry;
         }
 
         public GameState SceneType => GameState.Sell;

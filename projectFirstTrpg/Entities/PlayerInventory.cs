@@ -15,7 +15,10 @@ namespace Entities
         public IReadOnlyList<Item> Items => inventory;
         public IReadOnlyList<Item> EquippedItems => equipped;
 
-        public bool HasItem(Item item) => inventory.Contains(item);
+        public bool HasItem(Item item)
+        {
+            return inventory.Any(i => i.Name == item.Name);
+        }
 
         public void Buy(Item item)
         {

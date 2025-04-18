@@ -33,7 +33,7 @@ namespace Scenes
             return input switch
             {
                 "1" => TryRest(),
-                "0" => GameState.Main,
+                "0" => GameState.Pop,
                 _ => InvalidInput()
             };
         }
@@ -57,14 +57,14 @@ namespace Scenes
             }
 
             ConsoleUtil.WaitForNext();
-            return GameState.Rest;
+            return GameState.Retry;
         }
 
         private GameState InvalidInput()
         {
             Console.WriteLine("\n잘못된 입력입니다.");
             ConsoleUtil.WaitForNext();
-            return GameState.Rest;
+            return GameState.Retry;
         }
 
         public GameState SceneType => GameState.Rest;

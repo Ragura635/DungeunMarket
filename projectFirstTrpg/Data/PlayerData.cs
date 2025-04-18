@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    internal static class PlayerData
+    public static class PlayerData
     {
         public static Player Player;
+        public static string LastLoadedSlotPath;
+        public static string TempName;
+        public static JobType TempJob;
     }
 }

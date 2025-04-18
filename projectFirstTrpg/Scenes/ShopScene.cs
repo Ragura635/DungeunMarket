@@ -9,7 +9,7 @@ using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Scenes.ShopScenes
+namespace Scenes
 {
     public class ShopScene : IScene
     {
@@ -38,7 +38,7 @@ namespace Scenes.ShopScenes
             {
                 "1" => GameState.Buy,
                 "2" => GameState.Sell,
-                "0" => GameState.Main,
+                "0" => GameState.Pop,
                 _ => InvalidInput()
             };
         }
@@ -47,7 +47,7 @@ namespace Scenes.ShopScenes
         {
             Console.WriteLine("\n잘못된 입력입니다.");
             ConsoleUtil.WaitForNext();
-            return GameState.Shop;
+            return GameState.Retry;
         }
 
         public GameState SceneType => GameState.Shop;

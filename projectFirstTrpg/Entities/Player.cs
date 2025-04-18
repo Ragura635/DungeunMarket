@@ -12,11 +12,11 @@ namespace Entities
 {
     public class Player
     {
-        public string Name { get; private set; }
-        public JobType Job { get; private set; }
+        public string Name { get; set; }
+        public JobType Job { get; set; }
 
-        public PlayerStatus Status { get; private set; }
-        public PlayerInventory Inventory { get; private set; }
+        public PlayerStatus Status { get; set; }
+        public PlayerInventory Inventory { get; set; }
 
         public int Gold { get; set; }
 

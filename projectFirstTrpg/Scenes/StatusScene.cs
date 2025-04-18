@@ -25,7 +25,7 @@ namespace Scenes
             PlayerStatusView.PrintStatus(player);
 
             ConsoleUtil.WaitForNext();
-            return GameState.Main;
+            return GameState.Pop;
         }
 
         public GameState SceneType => GameState.Status;

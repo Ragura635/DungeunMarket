@@ -1,11 +1,7 @@
 ﻿using Core;
 using Utils;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Collections.Specialized.BitVector32;
+using Data;
 
 namespace Scenes
 {
@@ -23,7 +19,9 @@ namespace Scenes
             Console.WriteLine("3. 상점");
             Console.WriteLine("4. 던전 입장");
             Console.WriteLine("5. 휴식하기");
-            //Console.WriteLine("0. 게임 종료");
+            Console.WriteLine("6. 저장하기");
+            Console.WriteLine("7. 불러오기");
+            Console.WriteLine("0. 게임 종료");
 
             Console.Write("\n원하시는 행동을 입력해주세요.\n>> ");
             string input = Console.ReadLine();
@@ -35,7 +33,9 @@ namespace Scenes
                 "3" => GameState.Shop,
                 "4" => GameState.Dungeon,
                 "5" => GameState.Rest,
-                //"0" => GameState.Exit,
+                "6" => GameState.Save,
+                "7" => GameState.Load,
+                "0" => GameState.Exit,
                 _ => InvalidInput()
             };
         }
@@ -44,7 +44,7 @@ namespace Scenes
         {
             Console.WriteLine("\n잘못된 입력입니다.");
             ConsoleUtil.WaitForNext();
-            return GameState.Main;
+            return GameState.Retry;
         }
 
         public GameState SceneType => GameState.Main;

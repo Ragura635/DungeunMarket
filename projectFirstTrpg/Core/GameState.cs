@@ -5,8 +5,11 @@ namespace Core
     public enum GameState
     {
         Intro,
-        CreateCharacter,
-        LoadCharacter,
+        CreateName,
+        SelectJob,
+        SelectSlot,
+        Save,
+        Load,
         Main,
         Status,
         Inventory,
@@ -17,6 +20,10 @@ namespace Core
         Dungeon,
         Rest,
         GameOver,
-        Exit
+        Exit,
+
+        Retry,
+        Pop,            // 이전 씬으로 되돌아가기(Pop)
+        MainFromLoad    // LoadScene → MainScene으로 교체 (Pop + Push Main)
     }
 }

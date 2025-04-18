@@ -37,12 +37,12 @@ namespace Scenes
             {
                 Console.WriteLine("\n잘못된 입력입니다.");
                 ConsoleUtil.WaitForNext();
-                return GameState.Dungeon;
+                return GameState.Retry;
             }
 
             if (index == 0)
             {
-                return GameState.Main;
+                return GameState.Pop;
             }
 
             Dungeon selected = dungeons[index - 1];
@@ -57,7 +57,7 @@ namespace Scenes
             }
 
             ConsoleUtil.WaitForNext();
-            return GameState.Dungeon;
+            return GameState.Retry;
         }
 
         private void ShowDungeonList()
@@ -87,7 +87,7 @@ namespace Scenes
                 Console.WriteLine($"축하합니다! {selected.Name}을 클리어했습니다.");
             }
 
-            int defGap = defGap = player.Status.CurrentDef - selected.DefCut; ;
+            int defGap = player.Status.CurrentDef - selected.DefCut; ;
             int tempDamage;
             int damage;
 
